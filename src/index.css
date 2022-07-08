@@ -1,13 +1,47 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  overflow-x: hidden;
+  background-image: radial-gradient(circle, #1f3756, #1b2e4f, #182648, #161d41, #141539);
 }
+
+.pentagon{
+  background: url('./images/bg-pentagon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.lizard{
+  background-image: linear-gradient(to bottom, #834fe3, #8553e4, #8856e4, #8a5ae5, #8c5de5);
+}
+
+.scissor{
+  background-image: linear-gradient(to bottom, #ec9e0e, #eca114, #eca419, #eca61e, #eca922);
+}
+
+.paper{
+  background-image: linear-gradient(to bottom, #4865f4, #4c68f4, #4f6bf5, #536ef5, #5671f5);
+}
+
+.rock{
+  background-image: linear-gradient(to bottom, #dc2e4e, #dc2e4e, #dc2e4e, #dc2e4e, #dc2e4e);
+}
+
+.spock{
+  background-image: linear-gradient(to bottom, #40b9ce, #45bacf, #49bccf, #4ebdd0, #52bed1);
+}
+
+
+
+

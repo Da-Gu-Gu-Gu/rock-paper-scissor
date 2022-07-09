@@ -5,14 +5,21 @@ import rock from "../images/icon-rock.svg";
 import paper from "../images/icon-paper.svg";
 import spock from "../images/icon-spock.svg";
 import gsap from "gsap";
+import Result from "./Result";
 
 const tl = gsap.timeline();
 
-const Start = ({ checkHandler, playing, playingHandler }) => {
+const Start = ({ checkHandler, playing, playingHandler, win }) => {
   const names = [".scissor", ".paper", ".rock", ".lizard", ".spock"];
+  const [reverseName, setReverseName] = React.useState();
+  const [reverseTop, setReverseTop] = React.useState();
+  const [reverseLeft, setReverseLeft] = React.useState();
+  const [reverseCom, setReverseCom] = React.useState();
 
   const botLeft = window.innerWidth > 765 ? "80%" : "67%";
   const changeAnime = (name, top, left, my) => {
+    setReverseLeft(left);
+    setReverseTop(top);
     const animate = (com) => {
       tl.fromTo(
         names.filter((x) => x !== name),
@@ -100,6 +107,8 @@ const Start = ({ checkHandler, playing, playingHandler }) => {
         );
     };
 
+    setReverseName(name);
+
     const chooseHandler = (x) => {
       let com = Math.floor(Math.random() * 5);
       com === x && chooseHandler(x);
@@ -112,9 +121,117 @@ const Start = ({ checkHandler, playing, playingHandler }) => {
     chooseHandler(my);
   };
 
+  const reverseAnime = () => {
+    tl.fromTo(
+      ".result",
+      {
+        opacity: 1,
+        y: 0,
+      },
+      {
+        y: -10,
+        opacity: 0,
+        duration: 0.3,
+        // delay: 4,
+      }
+    )
+      .fromTo(
+        ".com",
+        {
+          display: "block",
+          y: 0,
+          duration: 0.3,
+        },
+        {
+          y: -10,
+          display: "none",
+        }
+      )
+      .fromTo(
+        names[reverseCom],
+        {
+          rotate: -360,
+          scale: 0,
+          display: "none",
+        },
+        {
+          display: "flex",
+          scale: 1.5,
+          rotate: 360,
+          top: "40%",
+          left: botLeft,
+          duration: 0.5,
+        }
+      )
+      .fromTo(
+        ".you",
+        {
+          display: "block",
+          y: 0,
+          duration: 0.3,
+        },
+        {
+          y: -10,
+          display: "none",
+        }
+      )
+      .fromTo(
+        reverseName,
+        {
+          top: "40%",
+          left: "5%",
+          scale: 1.5,
+          rotate: 360,
+
+          duration: 0.8,
+        },
+        {
+          top: reverseTop,
+          left: reverseLeft,
+          scale: 1,
+          rotate: 0,
+        }
+      )
+      .fromTo(
+        ".pentagon",
+        {
+          width: "100%",
+          backgroundSize: "0% 0%",
+          duration: 0.4,
+        },
+        {
+          width: "350px",
+          backgroundSize: "100% 100%",
+        }
+      )
+      .fromTo(
+        names.filter((x) => x !== reverseName),
+        {
+          rotate: -360,
+          scale: 0,
+          display: "none",
+          stagger: 0.2,
+          duration: 0.4,
+        },
+        {
+          display: "flex",
+          rotate: 0,
+          scale: 1,
+        }
+      );
+    // console.log(reverseName);
+  };
+
   return (
-    <div className="mx-auto  justify-self-center  md:w-2/4 w-[350px] my-5 start">
+    <div className="mx-auto  h-[450px] md:h-max justify-self-center  md:w-3/4 lg:w-2/4 w-[350px] my-5 start">
       <div className="relative mx-auto   w-[350px] h-[350px] pentagon ">
+        {!playing && (
+          <Result
+            win={win}
+            playingHandler={playingHandler}
+            reverseAnime={reverseAnime}
+          />
+        )}
         <p className="text-white hidden you md:text-2xl tracking-wider absolute left-[5%]  md:top-[10%] top-[90%]">
           YOU PICKED
         </p>

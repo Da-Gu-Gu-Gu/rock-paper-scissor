@@ -69,12 +69,12 @@ const App = () => {
       console.log("status", "my win");
       setScore(score + 1);
       setWin(true);
-      // setPlaying(false);
+      setPlaying(false);
     } else {
       console.log("status", "my lose");
       score > 0 && setScore(score - 1);
       setWin(false);
-      // setPlaying(false);
+      setPlaying(false);
     }
   };
 
@@ -88,6 +88,7 @@ const App = () => {
       <Start
         checkHandler={checkHandler}
         playing={playing}
+        win={win}
         playingHandler={setPlaying}
       />
       <Rule />

@@ -20,6 +20,7 @@ body{
   background: url('./images/bg-pentagon.svg');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100%;
 }
 
 .lizard{

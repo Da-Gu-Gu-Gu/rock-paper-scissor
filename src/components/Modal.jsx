@@ -8,7 +8,7 @@ const Modal = ({ open, modalClose }) => {
       className={`fixed flex flex-col justify-around md:w-[400px] w-screen overflow-hidden transition-all ease-in duration-200
         ${
           open ? "md:h-max  h-screen p-5" : "h-0"
-        }  z-10 top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 bg-white rounded-md`}
+        }  z-10 top-0 left-0 md:top-1/2 md:left-1/2  md:-translate-x-1/2 md:-translate-y-1/2 bg-white rounded-md`}
     >
       <div className="flex md:justify-between items-center justify-center">
         <p className="text-3xl font-extrabold text-dtex">RULES</p>

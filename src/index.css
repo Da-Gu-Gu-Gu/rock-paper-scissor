@@ -44,5 +44,30 @@ body{
 }
 
 
+.common::before,.common::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color:#8a82fb;
+  border-radius: 50%;
+  z-index: -1;
+  opacity:0.4;
+}
+
+.common::before{
+  animation:pulse 3s ease-in-out infinite;
+}
+.common::after{
+  animation:pulse 3s 1s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  100%{
+    transform: scale(2.5);
+    opacity:0;
+  }
+}
+
 
 

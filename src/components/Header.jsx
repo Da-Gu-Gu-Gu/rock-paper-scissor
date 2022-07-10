@@ -6,7 +6,7 @@ const Header = ({ score }) => {
       <img src={logo} alt="logo" className=" h-full" />
       <div className="bg-white px-8 h-full text-center tracking-wider py-1 rounded-md">
         <p className="text-stex ">SCORE</p>
-        <h2 className="text-4xl text-dtex">{score}</h2>
+        <h2 className="text-4xl text-dtex score">{score}</h2>
       </div>
     </div>
   );

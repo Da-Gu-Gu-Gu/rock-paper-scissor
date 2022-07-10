@@ -4,8 +4,6 @@ import Header from "./components/Header";
 import Rule from "./components/Rule";
 import Start from "./components/Start";
 
-const tl = gsap.timeline();
-
 const introAnime = () => {
   gsap.fromTo(
     ".header",
@@ -51,36 +49,39 @@ const App = () => {
   const [win, setWin] = useState();
   const [playing, setPlaying] = useState(true);
 
-  // const chooseHandler = (x) => {
-  //   let com = Math.floor(Math.random() * 5);
-  //   com === x && chooseHandler(x);
-  //   if (com !== x) {
-  //     // console.log("con", computer);
-  //     checkHandler(x, com);
-  //   }
-  // };
-
   const checkHandler = (my, computer) => {
     //check greater 4 or not
     let checkmyplusone = my + 1 > 4 ? my + 1 - 5 : my + 1;
     let checkmyplusthree = my + 3 > 4 ? my + 3 - 5 : my + 3;
 
     if (checkmyplusone === computer || checkmyplusthree === computer) {
-      console.log("status", "my win");
-      setScore(score + 1);
       setWin(true);
       setPlaying(false);
+      setScore(score + 1);
     } else {
-      console.log("status", "my lose");
-      score > 0 && setScore(score - 1);
       setWin(false);
       setPlaying(false);
+      score > 0 && setScore(score - 1);
     }
   };
 
   useEffect(() => {
     introAnime();
   }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      ".score",
+      {
+        scale: 0,
+      },
+      {
+        scale: 1,
+        duration: 0.3,
+        delay: 2,
+      }
+    );
+  }, [score]);
 
   return (
     <div className="w-screen relative ">

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 
-const Result = ({ win, playingHandler, reverseAnime }) => {
+const Result = ({ win, playingHandler, reverseAnime, me, computer }) => {
   useEffect(() => {
     gsap.fromTo(
       ".result",
